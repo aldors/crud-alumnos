@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario Alumno</title>
+</head>
+<body>
+
+<h1>Formulario Alumno</h1>
+
+<form th:action="@{/alumnos/guardar}" th:object="${alumno}" method="post">
+
+    <!-- ID oculto (para editar) -->
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>Nombre:</label><br>
+    <input type="text" th:field="*{nombre}" required><br><br>
+
+    <label>Apellido:</label><br>
+    <input type="text" th:field="*{apellido}" required><br><br>
+
+    <label>Matrícula:</label><br>
+    <input type="text" th:field="*{matricula}" required><br><br>
+
+    <label>Correo:</label><br>
+    <input type="email" th:field="*{correo}" required><br><br>
+
+    <label>Edad:</label><br>
+    <input type="number" th:field="*{edad}" min="1" required><br><br>
+
+    <label>Grado:</label><br>
+    <input type="text" th:field="*{grado}" required><br><br>
+
+    <label>Grupo:</label><br>
+    <input type="text" th:field="*{grupo}" required><br><br>
+
+    <label>Activo:</label>
+    <input type="checkbox" th:field="*{activo}"><br><br>
+
+    <button type="submit">Guardar</button>
+    <a th:href="@{/alumnos}">Cancelar</a>
+
+</form>
+
+</body>
+</html>

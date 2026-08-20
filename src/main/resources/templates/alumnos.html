@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Alumnos</title>
+</head>
+<body>
+
+<h1>Lista de Alumnos</h1>
+
+<a th:href="@{/alumnos/nuevo}">Nuevo Alumno</a>
+
+<br><br>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Matrícula</th>
+        <th>Correo</th>
+        <th>Edad</th>
+        <th>Grado</th>
+        <th>Grupo</th>
+        <th>Activo</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="alumno : ${listaAlumnos}">
+        <td th:text="${alumno.id}"></td>
+        <td th:text="${alumno.nombre}"></td>
+        <td th:text="${alumno.apellido}"></td>
+        <td th:text="${alumno.matricula}"></td>
+        <td th:text="${alumno.correo}"></td>
+        <td th:text="${alumno.edad}"></td>
+        <td th:text="${alumno.grado}"></td>
+        <td th:text="${alumno.grupo}"></td>
+        <td th:text="${alumno.activo}"></td>
+
+        <td>
+            <a th:href="@{/alumnos/editar/{id}(id=${alumno.id})}">Editar</a>
+            |
+            <a th:href="@{/alumnos/eliminar/{id}(id=${alumno.id})}"
+               onclick="return confirm('¿Seguro que deseas eliminar este alumno?');">
+                Eliminar
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
